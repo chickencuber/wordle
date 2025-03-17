@@ -47,19 +47,16 @@ $effect(() => {
         excludes.push(v);
     }
     let str = "";
-    for(const w of possible) {
+    f: for(const w of possible) {
         const n = w.toUpperCase();
         if(wordincludesany(n, excludes)) continue;
         if(!wordincludesall(n, includes)) continue;
-        let f = false;
         for(let i = 0; i < 5; i++) {
             if(pos[i] === false) continue;
             if(pos[i] !== n[i]) {
-                f = true;
-                break;
+                continue f;
             }
         }
-        if(f) continue;
         str += n + "\n";
     }
     possibles = str; 
